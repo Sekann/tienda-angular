@@ -1,0 +1,14 @@
+
+<app-header-backoffice></app-header-backoffice>
+<!--contenedor padre-->
+<div class="web-container" [class.collapsed]="!isActiveSidebar">
+    <!--contenedor donde esta el contrenido de la pagina-->
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+    <!--contenedor donde esta el sidebar-->
+    <div [class.collapsed]="!isActiveSidebar">
+        <app-sidebar></app-sidebar>
+    </div>
+</div>
+

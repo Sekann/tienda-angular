@@ -1,0 +1,62 @@
+<div class="auth-container position-relative m-auto my-5 py-4 px-4 bg-white shadow-lg rounded-4 border border-light">
+  
+  <div class="text-center mb-4">
+    <h2 class="h4 fw-bold text-primary">Crear una Cuenta</h2>
+    <p class="text-muted">Regístrate para acceder a la aplicación</p>
+  </div>
+
+  <form method="post" [formGroup]="registerForm" (ngSubmit)="submit()">
+    
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Usuario</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-person"></i></span>
+        <input class="form-control" type="text" placeholder="Ej: Sekan" formControlName="username">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Contraseña</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+        <input class="form-control" type="password" placeholder="*****" formControlName="password">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Rol en la aplicación</label>
+      <select class="form-select" formControlName="roleName">
+        <optgroup label="Seleccione una opción">
+          <option value="">------</option>
+          <option value="ADMIN">Administrador</option>
+          <option value="CLIENT">Cliente</option>
+          <option value="SELLER">Vendedor</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label fw-semibold">Nombre</label>
+        <input class="form-control" type="text" placeholder="Ej: Juan" formControlName="firstName">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label fw-semibold">Apellidos</label>
+        <input class="form-control" type="text" placeholder="Ej: Pérez" formControlName="lastName">
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label fw-semibold">Dirección</label>
+      <input class="form-control" type="text" placeholder="Ej: Calle 123, Ciudad" formControlName="address">
+    </div>
+
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary fw-bold py-2" [disabled]="registerForm.invalid">
+        <i class="bi bi-check-circle"></i> Finalizar Registro
+      </button>
+    </div>
+
+  </form>
+
+</div>

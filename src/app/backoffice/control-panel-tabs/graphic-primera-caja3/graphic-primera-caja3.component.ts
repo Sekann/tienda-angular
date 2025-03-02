@@ -1,0 +1,61 @@
+import { Component, OnInit } from '@angular/core';
+import { ChartConfiguration, ChartDataset, ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+
+@Component({
+  selector: 'app-graphic-primera-caja3',
+  imports: [BaseChartDirective],
+  templateUrl: './graphic-primera-caja3.component.html',
+  styleUrl: './graphic-primera-caja3.component.scss'
+})
+export class GraphicPrimeraCaja3Component implements OnInit {
+ngOnInit(): void {
+    this.setChartData()
+  }
+
+  public doughnutChartOptions: ChartConfiguration['options'] = {
+    responsive: true, // Línea obligatoria
+    maintainAspectRatio: false, // Proporción del gráfico
+    plugins: {
+      legend: { // campo opcional
+        display: true,
+        position: 'bottom'
+      },
+      tooltip: {},
+      title: { // Campo opcional
+        text: "Primer gráfico",
+        display: true,
+      }
+    }
+  }
+
+  public doughnutChartLabels: string[] = []
+  public doughnutChartData: { labels: string[], datasets: ChartDataset<'doughnut'>[]} = {
+    labels: [],
+    datasets: [{
+      data: [],
+      backgroundColor: [],
+      hoverBackgroundColor: [],
+    }]
+  }
+
+  public doughnutChartType: ChartType = 'doughnut';
+
+  private setChartData(): void {
+    this.doughnutChartLabels = [
+      "Label 1",
+      "Label 2",
+      "Label 3",
+      "Label 4",
+    ]
+    this.doughnutChartData.labels = [
+      "Label 1",
+      "Label 2",
+      "Label 3",
+      "Label 4",
+    ]
+    this.doughnutChartData.datasets[0].data = [20, 30, 40, 50]
+    this.doughnutChartData.datasets[0].backgroundColor = ["red", "black", "green", "yellow"]
+  }
+
+}

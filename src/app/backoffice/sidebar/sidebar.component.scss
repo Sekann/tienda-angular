@@ -1,0 +1,13 @@
+.texto-main{
+    color:red;
+}
+.sidebar-container{
+    overflow-x: hidden;
+
+    &.collapsed{
+        h4,span{
+            display: none !important;
+        }
+    }
+        
+}
