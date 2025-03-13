@@ -21,18 +21,13 @@ export class PerfilComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   
-  ngOnInit(): void {
-    this.loadUserProfile();
-  }
-
-  loadUserProfile(): void {
+  ngOnInit() {
     this.userService.getUserProfile().subscribe({
       next: (data) => {
-        console.log('Datos recibidos:', data); // Debug
         this.user = data;
       },
-      error: (error) => {
-        console.error('Error cargando perfil', error);
+      error: (err) => {
+        console.error('Error obteniendo el perfil:', err);
       }
     });
   }

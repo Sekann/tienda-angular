@@ -1,9 +1,9 @@
-<div class="perfil-container">
+<div class="perfil-container" *ngIf="user">
     <div class="perfil-header position-relative">
         <img src="fondo.jpg" class="perfil-banner" alt="Fondo de perfil">
         <div class="perfil-info position-absolute text-center">
             <img src="perfil.png" class="perfil-img rounded-circle border border-white" alt="Foto de perfil">
-            <h4 class="text-white fw-bold mt-2">{{ user.name }}</h4>
+            <h4 class="text-white fw-bold mt-2">{{ user.firstname }}</h4>
             <p class="perfil-descripcion text-white">{{ user.role }}</p>
             <div class="badges">
                 <span class="badge bg-warning text-dark">⭐ Gold Seller</span>
@@ -18,13 +18,13 @@
     <div class="container mt-4">
         <div class="row g-4">
             <div class="col-lg-3">
-                <div class="info-card p-3 bg-white shadow rounded">
+                <div class="info-card p-3 bg-white shadow rounded" *ngIf="user">
                     <h5 class="fw-bold text-primary"><i class="bi bi-person-circle"></i> Información Personal</h5>
                     <ul class="list-unstyled">
-                        <li><i class="bi bi-person pe-2"></i> <strong>Nombre:</strong> {{ user.name }}</li>
+                        <li><i class="bi bi-person pe-2"></i> <strong>Nombre:</strong> {{ user.firstname }}</li>
                         <li><i class="bi bi-envelope pe-2"></i> <strong>Email:</strong> {{ user.email }}</li>
-                        <li><i class="bi bi-geo-alt pe-2"></i> <strong>Ubicación:</strong> {{ user.location }}</li>
-                        <li><i class="bi bi-phone pe-2"></i> <strong>Teléfono:</strong> {{ user.phone }}</li>
+                        <li><i class="bi bi-geo-alt pe-2"></i> <strong>Ubicación:</strong> {{ user.addres }}</li>
+                        <li><i class="bi bi-phone pe-2"></i> <strong>Teléfono:</strong> </li>
                     </ul>
                     <button class="btn btn-primary w-100 mt-2" (click)="editMode = !editMode">
                         <i class="bi bi-gear"></i> Editar Info
