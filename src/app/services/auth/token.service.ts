@@ -36,5 +36,6 @@ export class TokenService {
   removeToken(): void {
     this.cookieService.delete(this.ACCESS_TOKEN_KEY, '/','',false,'Strict');
     this.cookieService.delete(this.REFRESH_TOKEN_KEY, '/','',false,'Strict');
+    
   }
 }

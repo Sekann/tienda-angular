@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environments.prod';
 import { TokenService } from '../auth/token.service';
+import { UseStateService } from '../auth/use-state.service';
+import { PopupService } from '../utils/popup.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +13,11 @@ import { TokenService } from '../auth/token.service';
 export class UserService {
   private apiUrl = `${environment.apiUrl}/users`;
 
-  constructor(private http: HttpClient, private tokenService: TokenService) {}
+  constructor(private popupService: PopupService
+    ,private http: HttpClient,
+    private tokenService: TokenService,
+    private useStateService: UseStateService) {}
 
-  // Obtener encabezados con token
   private getHeaders(): HttpHeaders {
     const token = this.tokenService.getAccessToken();
     if (!token) {
@@ -26,17 +30,19 @@ export class UserService {
     });
   }
 
-
-  // Obtener perfil del usuario autenticado
   getUserProfile(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/profile`, { headers: this.getHeaders() }).pipe(
+    const username = this.useStateService.getUsername();
+    if (!username) {
+      return throwError(() => new Error('Usuario no encontrado'));
+    }
+
+    return this.http.post(`${this.apiUrl}/profile`, { username }, { headers: this.getHeaders() }).pipe(
       catchError((error) => {
-        console.error('❌ Error al obtener perfil:', error);
+        console.error('Error al obtener perfil:', error);
         return throwError(() => error);
       })
     );
   }
-
   // Actualizar perfil del usuario
   updateUserProfile(userData: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/update`, userData, { headers: this.getHeaders() }).pipe(
@@ -48,12 +54,22 @@ export class UserService {
   }
 
   // Cambiar contraseña
-  changePassword(passwordData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/change-password`, passwordData, { headers: this.getHeaders() }).pipe(
+  changePassword(oldPassword: string, newPassword: string): Observable<void> {
+    const username = this.useStateService.getUsername();
+    if (!username) {
+      return throwError(() => new Error('Usuario no encontrado'));
+    }
+
+    const passwordData = { username, oldPassword, newPassword };
+
+    return this.http.post<void>(`${this.apiUrl}/change-password`, passwordData, {
+      headers: this.getHeaders()
+    }).pipe(
       catchError((error) => {
         console.error('❌ Error al cambiar contraseña:', error);
         return throwError(() => error);
       })
     );
   }
+  
 }

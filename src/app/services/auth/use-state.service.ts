@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UseStateService {
   private readonly USER_KEY = 'tienda_online'
-  constructor() { }
+  constructor( private cookieService: CookieService) { }
 
-  save(username: string,role: string): void {
-    sessionStorage.setItem(this.USER_KEY, JSON.stringify({ username, role }));
+  save(username: string, roleName: string): void {
+    const userData = JSON.stringify({ username, roleName });
+    sessionStorage.setItem(this.USER_KEY, userData);
   }
 
   getUsername(): string | null {
@@ -24,7 +26,7 @@ export class UseStateService {
     if(!session){
       return null;
     }else{
-      return session.role
+      return session.roleName
     }
   }
   removeSession(): void {

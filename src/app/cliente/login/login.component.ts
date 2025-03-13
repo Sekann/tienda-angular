@@ -38,12 +38,22 @@ export class LoginComponent {
     }
     this.credentialsService.login(this.loginForm.value as LoginInterface).subscribe({
       next: (data) => {
+        console.log("📌 Respuesta del backend:", data);
+
         this.popupService.loader("Cargando...", "Iniciando sesión");
         setTimeout(()=>{
         this.tokenService.saveToken(data.token, "13214324123");
-        this.useStateService.save(data.username, data.roleName);
+        const role = data.role;
+        this.useStateService.save(data.username, role);
         this.popupService.close();  
-        this.router.navigate(["/app/control-panel"]);
+        if (role === 'ADMIN' || role=== 'SELLER') {
+          this.router.navigate(["/app/control-panel"]);
+        } else if (role === 'CLIENT') {
+          this.router.navigate(["/tienda"]);
+        } else {
+          console.warn("Rol desconocido", role);
+          this.router.navigate(["/tienda"]);
+        }
       },1500)
     },
       error: (err) => {
