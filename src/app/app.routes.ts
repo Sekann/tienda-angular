@@ -9,10 +9,12 @@ import {RegistroComponent} from './cliente/registro/registro.component';
 import {TiendaComponent} from './cliente/tienda/tienda.component';
 import {ControlPanelComponent} from './backoffice/control-panel/control-panel.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import { PerfilComponent } from './backoffice/perfil/perfil.component';
+
 import { FormularioComponent } from './backoffice/formulario/formulario.component';
 import { authGuard } from './services/guards/auth.guard';
 import { publicGuard } from './services/guards/public.guard';
+import { PerfilComponent } from './backoffice/perfil/perfil.component';
+import {  ProductosComponent } from './backoffice/productos/productos.component';
 
 export const routes: Routes = [
 
@@ -36,6 +38,7 @@ export const routes: Routes = [
       {path: "control-panel", component: ControlPanelComponent}, // -> www.ejemplo.com/app/control-panel
       {path: "perfil", component: PerfilComponent}, // -> www.ejemplo.com/app/perfil
       {path: "formulario", component: FormularioComponent},
+      {path: "productos", component: ProductosComponent},
     ]
   },
 

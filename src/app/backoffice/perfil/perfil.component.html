@@ -3,13 +3,15 @@
         <img src="fondo.jpg" class="perfil-banner" alt="Fondo de perfil">
         <div class="perfil-info position-absolute text-center">
             <img src="perfil.png" class="perfil-img rounded-circle border border-white" alt="Foto de perfil">
-            <h4 class="text-white fw-bold mt-2">Nombre Apellido</h4>
-            <p class="perfil-descripcion text-white">CEO & Fundador | Experto en ventas digitales.</p>
+            <h4 class="text-white fw-bold mt-2">{{ user.name }}</h4>
+            <p class="perfil-descripcion text-white">{{ user.role }}</p>
             <div class="badges">
                 <span class="badge bg-warning text-dark">⭐ Gold Seller</span>
                 <span class="badge bg-info">🎯 Nivel 5</span>
             </div>
-            <button class="btn btn-outline-light mt-2"><i class="bi bi-pencil"></i> Editar Perfil</button>
+            <button class="btn btn-outline-light mt-2" (click)="editMode = !editMode">
+                <i class="bi bi-pencil"></i> Editar Perfil
+            </button>
         </div>
     </div>
 
@@ -19,12 +21,14 @@
                 <div class="info-card p-3 bg-white shadow rounded">
                     <h5 class="fw-bold text-primary"><i class="bi bi-person-circle"></i> Información Personal</h5>
                     <ul class="list-unstyled">
-                        <li><i class="bi bi-person pe-2"></i> <strong>Nombre:</strong> Nombre</li>
-                        <li><i class="bi bi-envelope pe-2"></i> <strong>Email:</strong> ejemplo.com</li>
-                        <li><i class="bi bi-geo-alt pe-2"></i> <strong>Ubicación:</strong> Ciudad, País</li>
-                        <li><i class="bi bi-phone pe-2"></i> <strong>Teléfono:</strong> 123456789</li>
+                        <li><i class="bi bi-person pe-2"></i> <strong>Nombre:</strong> {{ user.name }}</li>
+                        <li><i class="bi bi-envelope pe-2"></i> <strong>Email:</strong> {{ user.email }}</li>
+                        <li><i class="bi bi-geo-alt pe-2"></i> <strong>Ubicación:</strong> {{ user.location }}</li>
+                        <li><i class="bi bi-phone pe-2"></i> <strong>Teléfono:</strong> {{ user.phone }}</li>
                     </ul>
-                    <button class="btn btn-primary w-100 mt-2"><i class="bi bi-gear"></i> Editar Info</button>
+                    <button class="btn btn-primary w-100 mt-2" (click)="editMode = !editMode">
+                        <i class="bi bi-gear"></i> Editar Info
+                    </button>
                 </div>
             </div>
 
@@ -32,29 +36,11 @@
                 <div class="info-card p-3 bg-white shadow rounded">
                     <h5 class="fw-bold"><i class="bi bi-box-seam"></i> Productos en Venta</h5>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div *ngFor="let product of user.products" class="col-md-4">
                             <div class="producto-card shadow rounded overflow-hidden">
-                                <img src="producto1.jpg" class="img-fluid" alt="Producto 1">
+                                <img [src]="product.image" class="img-fluid" [alt]="product.name">
                                 <div class="p-2 text-center">
-                                    <p class="fw-bold">Producto 1</p>
-                                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i> Editar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="producto-card shadow rounded overflow-hidden">
-                                <img src="producto2.jpg" class="img-fluid" alt="Producto 2">
-                                <div class="p-2 text-center">
-                                    <p class="fw-bold">Producto 2</p>
-                                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i> Editar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="producto-card shadow rounded overflow-hidden">
-                                <img src="producto3.jpg" class="img-fluid" alt="Producto 3">
-                                <div class="p-2 text-center">
-                                    <p class="fw-bold">Producto 3</p>
+                                    <p class="fw-bold">{{ product.name }}</p>
                                     <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i> Editar</button>
                                 </div>
                             </div>
@@ -63,36 +49,18 @@
                 </div>
 
                 <div class="info-card p-3 bg-white shadow rounded mt-4">
-                    <h5 class="fw-bold"><i class="bi bi-chat-dots"></i> Mensajes Recientes</h5>
-                    <div class="chat-mensaje mb-2">
-                        <p><strong>Cliente 1:</strong> ¿Cuándo llegará mi pedido?</p>
-                        <button class="btn btn-sm btn-outline-primary"><i class="bi bi-reply"></i> Responder</button>
+                    <h5 class="fw-bold"><i class="bi bi-key"></i> Cambiar Contraseña</h5>
+                    <div>
+                        <label for="oldPassword" class="form-label">Contraseña Antigua</label>
+                        <input type="password" class="form-control" [(ngModel)]="passwordChange.oldPassword" placeholder="Ingrese su contraseña actual">
                     </div>
-                    <div class="chat-mensaje mb-2">
-                        <p><strong>Cliente 2:</strong> ¿Tienen más tallas disponibles?</p>
-                        <button class="btn btn-sm btn-outline-primary"><i class="bi bi-reply"></i> Responder</button>
+                    <div class="mt-2">
+                        <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                        <input type="password" class="form-control" [(ngModel)]="passwordChange.newPassword" placeholder="Ingrese su nueva contraseña">
                     </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3">
-                <div class="info-card p-3 bg-white shadow rounded">
-                    <h5 class="fw-bold text-primary"><i class="bi bi-gear"></i> Configuración</h5>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="notifSwitch">
-                        <label class="form-check-label" for="notifSwitch">Notificaciones Activadas</label>
-                    </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="darkModeSwitch">
-                        <label class="form-check-label" for="darkModeSwitch">Modo Oscuro</label>
-                    </div>
-                </div>
-
-                <div class="info-card p-3 bg-white shadow rounded mt-4">
-                    <h5 class="fw-bold text-primary"><i class="bi bi-credit-card"></i> Métodos de Pago</h5>
-                    <p><i class="bi bi-cc-visa"></i> Visa •••• 1234</p>
-                    <p><i class="bi bi-cc-paypal"></i> PayPal Conectado</p>
-                    <button class="btn btn-outline-primary w-100"><i class="bi bi-plus-circle"></i> Agregar Método</button>
+                    <button class="btn btn-primary w-100 mt-3" (click)="changePassword()">
+                        <i class="bi bi-lock"></i> Cambiar Contraseña
+                    </button>
                 </div>
             </div>
         </div>
