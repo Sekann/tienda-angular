@@ -13,7 +13,7 @@ import { PopupService } from '../../services/utils/popup.service';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent implements OnInit {
-  isActiveParrafo: boolean = true;
+  isActiveParrafo: boolean = false;
 
   constructor(private sidebarStatusService: SideBarStatusService,
     private useStateService: UseStateService,

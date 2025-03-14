@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SideBarStatusService {
-    sidebarStatus:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(true);
+    sidebarStatus:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(false);
     status$: Observable<boolean>=this.sidebarStatus.asObservable();
 
   constructor() { }

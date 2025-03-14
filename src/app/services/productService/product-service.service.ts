@@ -19,16 +19,4 @@ export class ProductService {
       'Content-Type': 'application/json'
     });
   }
-
-  getMyProducts(): Observable<any> {
-    return this.http.get(`${this.apiUrl}`, { headers: this.getHeaders() });
-  }
-
-  addProduct(product: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/add`, { headers: this.getHeaders() });
-  }
-
-  deleteProduct(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/delete/${id}`, { headers: this.getHeaders() });
-  }
 }

@@ -21,7 +21,7 @@ import { SideBarStatusService } from '../../services/sideBarStatus/side-bar-stat
   styleUrl: './header-backoffice.component.scss'
 })
 export class HeaderBackofficeComponent {
-  isActive: boolean = true;
+  isActive: boolean = false;
   
   isActiveItems:any={
   isActiveNotification:false,
