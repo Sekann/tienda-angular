@@ -31,14 +31,14 @@ export class GraphicTerceraCajaComponent implements OnInit {
       x: {
         title: {
           display: true,
-          text: "Meses",
+          text: "Months",
           font: {size: 14, weight: "bolder"}
         }
       },
       y: {
         title: {
           display: true,
-          text: "Progreso %",
+          text: "Progress %",
           font: {size: 14, weight: "bolder"}
         },
         ticks: {
@@ -52,7 +52,7 @@ export class GraphicTerceraCajaComponent implements OnInit {
   public lineChartData: ChartDataset<'line'>[] = [
     {
       data: [],
-      label: "Progreso",
+      label: "Progress",
       backgroundColor: [],
       hoverBackgroundColor: [],
     }
@@ -63,8 +63,8 @@ export class GraphicTerceraCajaComponent implements OnInit {
 
   private setChartData(): void {
     const data = {
-      labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"],
-      values: [10, 25, 40, 35, 5, 100]
+      labels: ["January", "February", "March", "April", "May", "June"],
+      values: [10, 25, 40, 35, 35, 65]
     }
 
     this.lineChartLabels = data.labels;

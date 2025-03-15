@@ -1,86 +1,153 @@
-
 <div class="slide-down position-absolute notification-container bg-white shadow rounded-3">
-
-  <div class="d-flex flex-row flex-nowrap align-items-center justify-content-between px-3 pt-3 pb-2 border border-top-0 border-end-0 border-start-0 mb-2">
-    <p class="mb-0 text-danger">Borrar</p>
+  <div class="d-flex flex-row flex-nowrap align-items-center justify-content-between px-3 pt-3 pb-2 border-bottom mb-2">
+    <button class="btn btn-link text-danger p-0">Borrar</button>
     <p class="mb-0 h6 fw-bolder">Notificaciones</p>
   </div>
 
-  <!-- Contenedor de los mensajes -->
-  <div class="message-container">
-
-    <div class="item-message m-auto position-relative">
-      <p class="m-0 text-muted position-absolute date-item">14:00pm</p>
-      <div class="content-item">
-        <h2 class="h6 mb-1 text-end fw-bolder">Nueva subscripción creada</h2>
-        <p class="mb-0 text-muted small text-end">{{ "the basic plan. The customer will pay $25 per month"|truncateText }}</p>
+  <div class="message-list">
+    <div class="message-container">
+      <div class="item-message m-auto position-relative">
+        <time class="m-0 text-muted position-absolute date-item">14:00</time>
+        <div class="content-item">
+          <h2 class="h6 mb-1 fw-bolder">Nueva subscripción creada</h2>
+          <p class="mb-0 text-muted small">El cliente pagará $25/mes.</p>
+        </div>
+        <div class="icon-item d-flex align-items-center justify-content-center">
+          <i class="bi bi-flag-fill text-white"></i>
+        </div>
       </div>
-      <div class="icon-item d-flex align-items-center justify-content-center">
-        <i class="bi bi-flag-fill text-white"></i>
+    </div>
+
+    <div class="message-container">
+      <div class="item-message m-auto position-relative">
+        <time class="m-0 text-muted position-absolute date-item">13:00</time>
+        <div class="content-item">
+          <h2 class="h6 mb-1 text-warning fw-bolder">Servidor #2 no responde</h2>
+          <p class="mb-0 text-muted small">Ocurrió un error técnico que necesita solución.</p>
+        </div>
+        <div class="icon-item d-flex align-items-center justify-content-center">
+          <i class="bi bi-exclamation-triangle-fill text-white"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-container">
+      <div class="item-message m-auto position-relative">
+        <time class="m-0 text-muted position-absolute date-item">16:00</time>
+        <div class="content-item">
+          <h2 class="h6 mb-1 fw-bolder">Nuevos mensajes</h2>
+          <p class="mb-0 text-muted small">Error en pago de G Suite Basic.</p>
+        </div>
+        <div class="icon-item d-flex align-items-center justify-content-center">
+          <i class="bi bi-envelope-fill text-white"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-container">
+      <div class="item-message m-auto position-relative">
+        <time class="m-0 text-muted position-absolute date-item">13:00</time>
+        <div class="content-item">
+          <h2 class="h6 mb-1 fw-bolder">Sandy Doe</h2>
+          <p class="mb-0 text-muted small">Lorem ipsum dolor sit amet...</p>
+        </div>
+        <div class="icon-item d-flex align-items-center justify-content-center">
+          <i class="bi bi-person-fill text-white"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-container">
+      <div class="item-message m-auto position-relative">
+        <time class="m-0 text-muted position-absolute date-item">13:00</time>
+        <div class="content-item">
+          <h2 class="h6 mb-1 text-danger fw-bolder">Espacio del servidor al 99%</h2>
+          <p class="mb-0 text-muted small">Liberar espacio recomendado.</p>
+        </div>
+        <div class="icon-item d-flex align-items-center justify-content-center">
+          <i class="bi bi-hdd-fill text-white"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-container">
+      <div class="item-message m-auto position-relative">
+        <time class="m-0 text-muted position-absolute date-item">13:00</time>
+        <div class="content-item">
+          <h2 class="h6 mb-1 text-danger fw-bolder">Espacio del servidor al 99%</h2>
+          <p class="mb-0 text-muted small">Liberar espacio recomendado.</p>
+        </div>
+        <div class="icon-item d-flex align-items-center justify-content-center">
+          <i class="bi bi-hdd-fill text-white"></i>
+        </div>
+      </div>
+    </div>
+    <div class="message-container">
+      <div class="item-message m-auto position-relative">
+        <time class="m-0 text-muted position-absolute date-item">13:00</time>
+        <div class="content-item">
+          <h2 class="h6 mb-1 text-danger fw-bolder">Espacio del servidor al 99%</h2>
+          <p class="mb-0 text-muted small">Liberar espacio recomendado.</p>
+        </div>
+        <div class="icon-item d-flex align-items-center justify-content-center">
+          <i class="bi bi-hdd-fill text-white"></i>
+        </div>
+      </div>
+    </div>
+    <div class="message-container">
+      <div class="item-message m-auto position-relative">
+        <time class="m-0 text-muted position-absolute date-item">13:00</time>
+        <div class="content-item">
+          <h2 class="h6 mb-1 fw-bolder">Sandy Doe</h2>
+          <p class="mb-0 text-muted small">Lorem ipsum dolor sit amet...</p>
+        </div>
+        <div class="icon-item d-flex align-items-center justify-content-center">
+          <i class="bi bi-person-fill text-white"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-container">
+      <div class="item-message m-auto position-relative">
+        <time class="m-0 text-muted position-absolute date-item">13:00</time>
+        <div class="content-item">
+          <h2 class="h6 mb-1 text-danger fw-bolder">Espacio del servidor al 99%</h2>
+          <p class="mb-0 text-muted small">Liberar espacio recomendado.</p>
+        </div>
+        <div class="icon-item d-flex align-items-center justify-content-center">
+          <i class="bi bi-hdd-fill text-white"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-container">
+      <div class="item-message m-auto position-relative">
+        <time class="m-0 text-muted position-absolute date-item">13:00</time>
+        <div class="content-item">
+          <h2 class="h6 mb-1 text-danger fw-bolder">Espacio del servidor al 99%</h2>
+          <p class="mb-0 text-muted small">Liberar espacio recomendado.</p>
+        </div>
+        <div class="icon-item d-flex align-items-center justify-content-center">
+          <i class="bi bi-hdd-fill text-white"></i>
+        </div>
+      </div>
+    </div>
+    <div class="message-container">
+      <div class="item-message m-auto position-relative">
+        <time class="m-0 text-muted position-absolute date-item">13:00</time>
+        <div class="content-item">
+          <h2 class="h6 mb-1 text-danger fw-bolder">Espacio del servidor al 99%</h2>
+          <p class="mb-0 text-muted small">Liberar espacio recomendado.</p>
+        </div>
+        <div class="icon-item d-flex align-items-center justify-content-center">
+          <i class="bi bi-hdd-fill text-white"></i>
+        </div>
       </div>
     </div>
 
   </div>
-  <div class="message-container">
-
-    <div class="item-message m-auto position-relative">
-      <p class="m-0 text-muted position-absolute date-item">13:00pm</p>
-      <div class="content-item">
-        <h2 class="h6 mb-1 text-end text-warning fw-bolder">Server #2 Not Responding</h2>
-        <p class="mb-0 text-muted small text-end">{{ "Some technical error occurred needs to be resolved."|truncateText }}</p>
-      </div>
-      <div class="icon-item d-flex align-items-center justify-content-center">
-        <i class="bi bi-flag-fill text-white"></i>
-      </div>
-    </div>
-
-  </div>
-  <div class="message-container">
-
-    <div class="item-message m-auto position-relative">
-      <p class="m-0 text-muted position-absolute date-item">16:00pm</p>
-      <div class="content-item">
-        <h2 class="h6 mb-1 text-end fw-bolder">New Messages 2</h2>
-        <p class="mb-0 text-muted small text-end">{{ "t payment for your G Suite Basic subscription failed."|truncateText }}</p>
-      </div>
-      <div class="icon-item d-flex align-items-center justify-content-center">
-        <i class="bi bi-flag-fill text-white"></i>
-      </div>
-    </div>
-
-  </div>
-  <div class="message-container">
-
-    <div class="item-message m-auto position-relative">
-      <p class="m-0 text-muted position-absolute date-item">13:00pm</p>
-      <div class="content-item">
-        <h2 class="h6 mb-1 text-end fw-bolder">Sandy Doe</h2>
-        <p class="mb-0 text-muted small text-end">{{ "lorem ipsum dolor sit amet consectetur adipisicing elit"|truncateText }}</p>
-      </div>
-      <div class="icon-item d-flex align-items-center justify-content-center">
-        <i class="bi bi-flag-fill text-white"></i>
-      </div>
-    </div>
-
-  </div>
-  <div class="message-container">
-
-    <div class="item-message m-auto position-relative">
-      <p class="m-0 text-muted position-absolute date-item">13:00pm</p>
-      <div class="content-item">
-        <h2 class="h6 mb-1 text-end text-danger fw-bolder">.Server Space Occupied 99%</h2>
-        <p class="mb-0 text-muted small text-end">{{ "Consectetur, adipisci velit."|truncateText }}</p>
-      </div>
-      <div class="icon-item d-flex align-items-center justify-content-center">
-        <i class="bi bi-flag-fill text-white"></i>
-      </div>
-    </div>
-
-  </div>
-
 
   <div class="pb-2 border-top mt-3 pt-1">
-    <p class="mb-0 text-center text-muted small">Leer todos</p>
+    <button class="btn btn-link text-muted small text-center w-100">Leer todos</button>
   </div>
-
 </div>

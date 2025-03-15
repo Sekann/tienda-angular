@@ -38,13 +38,12 @@ export class LoginComponent {
     }
     this.credentialsService.login(this.loginForm.value as LoginInterface).subscribe({
       next: (data) => {
-        console.log("📌 Respuesta del backend:", data);
-
         this.popupService.loader("Cargando...", "Iniciando sesión");
         setTimeout(()=>{
         this.tokenService.saveToken(data.token, "13214324123");
         const role = data.role;
-        this.useStateService.save(data.username, role);
+        const userId = data.userId;
+        this.useStateService.save(data.username, role, userId);
         this.popupService.close();  
         if (role === 'ADMIN' || role=== 'SELLER') {
           this.router.navigate(["/app/control-panel"]);

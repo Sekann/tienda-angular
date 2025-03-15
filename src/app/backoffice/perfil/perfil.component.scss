@@ -7,10 +7,7 @@
 .perfil-header {
     position: relative;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+
     .perfil-banner {
         width: 100%;
         height: 250px;
@@ -19,6 +16,7 @@
     }
 
     .perfil-info {
+        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -42,12 +40,22 @@
     }
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .producto-card {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    height: 100%; 
 
     img {
         width: 100%;
-        transition: transform 0.3s;
+        height: 160px;
+        object-fit: cover;
     }
 
     &:hover img {
@@ -55,15 +63,59 @@
     }
 }
 
-/* Responsive */
+/* Responsive con boostrap no me iba bien, lo hice aqui */
+@media (max-width: 1200px) {
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .col-lg-3 {
+        order: 1;
+        width: 30%; 
+    }
+
+    .col-lg-6 {
+        order: 2;
+        width: 70%;
+    }
+
+    .col-lg-3.order-3 {
+        order: 3;
+        width: 100%; 
+    }
+}
+
 @media (max-width: 992px) {
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .col-lg-6 {
+        order: 1;
+        width: 100%;
+    }
+    .col-lg-3.order-2 {
+        order: 2;
+        width: 40%;
+    }
+
+    .col-lg-3.order-3 {
+        order: 3;
+        width: 60%;
+    }
     .perfil-header {
         .perfil-banner {
             height: 200px;
         }
+
         .perfil-img {
             width: 80px;
         }
+    }
+    .info-card {
+        text-align: center;
     }
 }
 
@@ -92,4 +144,21 @@
             }
         }
     }
+
+    .producto-card {
+        margin-bottom: 20px; 
+        padding: 10px;
+    }
+
+    .row {
+        gap: 15px;
+    }
+    .col-lg-3.order-2 {
+        width: 100% !important; 
+    }
+
+    .col-lg-3.order-3 {
+        width: 100% !important; 
+    }
+
 }

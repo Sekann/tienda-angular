@@ -1,3 +1,54 @@
-.tamaño-texto-caja1{
-    font-size: 12px;
+.graphics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .graphic-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        transition: transform 0.2s ease-in-out;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+
+        .border-bottom {
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+    }
 }
+
+.chart-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.traffic-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
+
+    .traffic-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 15px;
+        border-radius: 8px;
+        background: #f8f9fa;
+
+        i {
+            font-size: 24px;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+

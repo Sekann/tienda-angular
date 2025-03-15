@@ -3,6 +3,8 @@
   left: 0;
   width: 450px;
   min-width: 450px;
+  max-height: 400px;
+  overflow-y: auto;
 
   .text-danger {
     color: #dc3545;

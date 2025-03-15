@@ -1,9 +1,34 @@
-<div class="slide-down position-absolute pefil-container bg-white shadow rounded-3  p-2 mt-3">
-    
-        <a class="text-black text-decoration-none" href="app/perfil"><p class="ps-4 d-flex justify-content-end align-items-center small" >Perfil <i class=" ps-2 bi bi-person"></i></p></a>
-        <p class="ps-4 d-flex justify-content-end align-items-center small">Balance <i class=" ps-2 bi bi-wallet"></i></p>
-        <p class="ps-4 d-flex justify-content-end align-items-center small">Chats <i class=" ps-2 bi bi-chat"></i></p>
-        <p class="ps-4 d-flex justify-content-end align-items-center small">Configuración <i class=" ps-2 bi bi-gear"></i></p>
-        <p class="pb-2 border-top border-bottom mt-3 pt-1 d-flex justify-content-end align-items-center small">Disponibilidad <i class="ps-2 bi bi-toggle-on"></i></p>
-    <p class=" d-flex justify-content-end align-items-center small">Cerrar Sesión <i class=" ps-2 bi bi-box-arrow-right"></i></p>
+<div class="slide-down position-absolute perfil-container bg-white shadow rounded-3 p-2 mt-3">
+    <ul class="list-unstyled mb-0">
+        <li>
+            <a class="text-black text-decoration-none d-flex justify-content-between align-items-center small p-2" href="app/perfil">
+                Perfil <i class="bi bi-person"></i>
+            </a>
+        </li>
+        <li>
+            <button class="btn btn-link text-black text-decoration-none d-flex justify-content-between align-items-center small w-100 p-2">
+                Balance <i class="bi bi-wallet"></i>
+            </button>
+        </li>
+        <li>
+            <button class="btn btn-link text-black text-decoration-none d-flex justify-content-between align-items-center small w-100 p-2">
+                Chats <i class="bi bi-chat"></i>
+            </button>
+        </li>
+        <li>
+            <button class="btn btn-link text-black text-decoration-none d-flex justify-content-between align-items-center small w-100 p-2">
+                Configuración <i class="bi bi-gear"></i>
+            </button>
+        </li>
+        <li class="border-top border-bottom mt-2">
+            <button class="btn btn-link text-black text-decoration-none d-flex justify-content-between align-items-center small w-100 p-2">
+                Disponibilidad <i class="bi bi-toggle-on"></i>
+            </button>
+        </li>
+        <li>
+            <button (click)="closeSession()" class="btn btn-link text-danger d-flex justify-content-between align-items-center small w-100 p-2">
+                Cerrar Sesión <i class="bi bi-box-arrow-right"></i>
+            </button>
+        </li>
+    </ul>
 </div>

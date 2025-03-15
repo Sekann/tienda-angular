@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CredentialsService } from '../../../services/auth/credentials.service';
 
 @Component({
   selector: 'app-tab-perfil',
@@ -9,4 +10,12 @@ import { Component } from '@angular/core';
 })
 export class TabPerfilComponent {
 
+
+  constructor(
+      private credentialsService: CredentialsService,
+    ) { }
+
+  closeSession(): void {
+    this.credentialsService.logout(); // Usa la misma función
+  }
 }

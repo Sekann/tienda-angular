@@ -1,1 +1,61 @@
-<h2>Mis Productos</h2>
+<div class="container">
+    <!-- Formulario para Agregar Producto -->
+    <div class="card p-3 shadow mt-4">
+      <h4>Agregar Producto</h4>
+      <div class="row">
+        <div class="col-md-4">
+          <label>Nombre</label>
+          <input type="text" class="form-control" [(ngModel)]="newProduct.name">
+        </div>
+        <div class="col-md-4">
+          <label>Imagen URL</label>
+          <input type="text" class="form-control" [(ngModel)]="newProduct.imageUrl">
+        </div>
+        <div class="col-md-4">
+          <label>Descripción</label>
+          <input type="text" class="form-control" [(ngModel)]="newProduct.description">
+        </div>
+        <div class="col-md-4 mt-2">
+          <label>Precio</label>
+          <input type="number" class="form-control" [(ngModel)]="newProduct.price">
+        </div>
+        <div class="col-md-4 mt-2">
+          <label>Impuesto</label>
+          <input type="number" class="form-control" [(ngModel)]="newProduct.tax">
+        </div>
+        <div class="col-md-4 mt-2">
+          <label>Moneda</label>
+          <select class="form-control" [(ngModel)]="newProduct.currency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </select>
+        </div>
+        <div class="col-12 mt-3 text-center">
+          <button class="btn btn-primary" (click)="addProduct()">Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="text-center mt-4">Mis Productos</h2>
+  
+    <!-- Lista de Productos -->
+    <div class="row mt-4 product-container">
+      <div *ngFor="let product of products" class="product-card">
+        <div class="card shadow">
+          <img src="image.png" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text flex-grow-1">{{ product.description }}</p>
+            <p class="fw-bold">{{ product.price }} {{ product.currency }}</p>
+            <button class="btn btn-danger mt-auto" (click)="deleteProduct(product.id)">
+              <i class="bi bi-trash"></i> Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+  </div>
+  

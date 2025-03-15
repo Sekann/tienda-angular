@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SideBarStatusService } from '../../services/sideBarStatus/side-bar-status.service';
-import { Router } from '@angular/router';
-import { TokenService } from '../../services/auth/token.service';
-import { UseStateService } from '../../services/auth/use-state.service';
-import { PopupService } from '../../services/utils/popup.service';
+
+import { CredentialsService } from '../../services/auth/credentials.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,33 +14,19 @@ export class SidebarComponent implements OnInit {
   isActiveParrafo: boolean = false;
 
   constructor(private sidebarStatusService: SideBarStatusService,
-    private useStateService: UseStateService,
-    private popupService: PopupService,
-    private tokenService: TokenService,
-    private router: Router,
+    private credentialsService: CredentialsService,
+    private cdRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
     this.sidebarStatusService.status$.subscribe((status: boolean) => {
       this.isActiveParrafo = status;
+      this.cdRef.detectChanges(); // he agregado esta línea ya que angular no me actualizaba bien el sidebar se veia más ancho y aparecia el texto menu
     })
   }
 
-  async closeSession(): Promise<void> {
-    const confirmed = await this.popupService.showConfirmation(
-      "¿Estás seguro?",
-      "Se cerrará tu sesión."
-    );
-  
-    if (confirmed) {
-      this.popupService.loader("Cerrando sesión", "Espere un momento");
-      this.tokenService.removeToken();
-      this.useStateService.removeSession();
-      setTimeout(() => {
-        this.popupService.close();
-        this.router.navigate(["/login"]);
-      }, 1500);
-    }
+  closeSession(): void {
+    this.credentialsService.logout(); // Usa la función reutilizable
   }
 
 }
