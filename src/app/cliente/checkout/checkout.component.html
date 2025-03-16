@@ -1,0 +1,40 @@
+<div class="container py-5">
+    <h2 class="fw-bold text-center mb-4">🛍️ Pasarela de Pago</h2>
+  
+    <form [formGroup]="checkoutForm" (ngSubmit)="submitOrder()" class="card p-4 shadow-sm">
+      <div class="mb-3">
+        <label class="form-label">Nombre Completo</label>
+        <input type="text" class="form-control" formControlName="fullName" [class.is-invalid]="isInvalid('fullName')" required>
+        <div *ngIf="isInvalid('fullName')" class="invalid-feedback">Ingresa tu nombre completo.</div>
+      </div>
+  
+      <div class="mb-3">
+        <label class="form-label">Dirección</label>
+        <input type="text" class="form-control" formControlName="address" [class.is-invalid]="isInvalid('address')" required>
+        <div *ngIf="isInvalid('address')" class="invalid-feedback">Ingresa tu dirección.</div>
+      </div>
+ 
+      <div class="mb-3">
+        <label class="form-label">Ciudad</label>
+        <input type="text" class="form-control" formControlName="city" [class.is-invalid]="isInvalid('city')" required>
+        <div *ngIf="isInvalid('city')" class="invalid-feedback">Ingresa tu ciudad.</div>
+      </div>
+ 
+      <div class="mb-3">
+        <label class="form-label">Método de Pago</label>
+        <select class="form-select" formControlName="paymentMethod" [class.is-invalid]="isInvalid('paymentMethod')" required>
+          <option value="">Seleccione un método</option>
+          <option value="credit_card">💳 Tarjeta de Crédito</option>
+          <option value="paypal">🅿️ PayPal</option>
+          <option value="apple_pay">🍏 Apple Pay</option>
+          <option value="google_pay">🔵 Google Pay</option>
+        </select>
+        <div *ngIf="isInvalid('paymentMethod')" class="invalid-feedback">Seleccione un método de pago.</div>
+      </div>
+      <h4 class="text-end">Total: <span class="fw-bold">${{ total.toFixed(2) }}</span></h4>
+      <button type="submit" class="btn btn-success w-100 mt-3" [disabled]="checkoutForm.invalid">
+        <i class="bi bi-check-circle"></i> Confirmar Compra
+      </button>
+    </form>
+  </div>
+  

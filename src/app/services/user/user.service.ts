@@ -43,7 +43,7 @@ export class UserService {
       })
     );
   }
-  // Actualizar perfil del usuario
+
   updateUserProfile(userData: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/update`, userData, { headers: this.getHeaders() }).pipe(
       catchError((error) => {
@@ -52,8 +52,6 @@ export class UserService {
       })
     );
   }
-
-  // Cambiar contraseña
   changePassword(oldPassword: string, newPassword: string): Observable<void> {
     const username = this.useStateService.getUsername();
     if (!username) {

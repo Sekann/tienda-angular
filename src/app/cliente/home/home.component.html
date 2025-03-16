@@ -1,1 +1,84 @@
-<p>home works!</p>
+<div class="container-fluid px-0">
+  <!-- Hero Section -->
+  <section class="hero bg-primary text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-3 fw-bold">Descubre los Mejores Productos</h1>
+      <p class="lead">Ofertas increíbles y calidad garantizada. ¡Compra ahora!</p>
+      <a class="btn btn-light btn-lg px-5 py-3 fw-semibold" href="/tienda">Explorar Tienda</a>
+    </div>
+  </section>
+
+  <!-- Categorías Destacadas -->
+  <section class="container text-center my-5">
+    <h2 class="fw-bold">Categorías Populares</h2>
+    <div class="row justify-content-center mt-4">
+      <div class="col-6 col-md-3">
+        <div class="card category-card shadow-sm p-3">
+          <img src="tecnologia.jpg" class="img-fluid rounded" alt="Tecnología">
+          <p class="mt-3 fw-semibold">Tecnología</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card category-card shadow-sm p-3">
+          <img src="moda.png" class="img-fluid rounded" alt="Moda">
+          <p class="mt-3 fw-semibold">Moda</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card category-card shadow-sm p-3">
+          <img src="hogar.png" class="img-fluid rounded" alt="Hogar">
+          <p class="mt-3 fw-semibold">Hogar</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card category-card shadow-sm p-3">
+          <img src="deporte.png" class="img-fluid rounded" alt="Deporte">
+          <p class="mt-3 fw-semibold">Deporte</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Productos Populares -->
+  <section class="container my-5">
+    <h2 class="fw-bold text-center mb-4">Productos Populares</h2>
+    <div class="row">
+      <div class="col-6 col-md-3 mb-4" *ngFor="let product of popularProducts">
+        <div class="card shadow-sm product-card">
+          <img src="image.png" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="text-primary fw-bold">${{ product.price }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <button class="btn btn-primary px-4 py-2 fw-semibold" (click)="goToStore()">Ver Más Productos</button>
+    </div>
+  </section>
+
+  <!-- Beneficios -->
+  <section class="bg-light py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold">¿Por qué elegirnos?</h2>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <i class="bi bi-truck display-4 text-primary"></i>
+          <h5 class="fw-semibold mt-2">Envío Rápido</h5>
+          <p>Recibe tus productos en tiempo récord.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="bi bi-shield-lock display-4 text-primary"></i>
+          <h5 class="fw-semibold mt-2">Compra Segura</h5>
+          <p>Protegemos tu pago con seguridad garantizada.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="bi bi-hand-thumbs-up display-4 text-primary"></i>
+          <h5 class="fw-semibold mt-2">Satisfacción Garantizada</h5>
+          <p>Si no estás satisfecho, te devolvemos tu dinero.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

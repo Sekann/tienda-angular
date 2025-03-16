@@ -1,7 +1,13 @@
-nav {
+header {
   width: 100%;
-}
-
-.btn-white {
-  background-color: var(--bs-white);
+  .btn-white {
+    background-color: var(--bs-white);
+  }
+  .navbar-toggler {
+    border: none;
+    background: transparent;
+  }
+  .offcanvas {
+    width: 250px;
+  }
 }

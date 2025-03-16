@@ -8,8 +8,8 @@ import { TokenService } from '../auth/token.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
-  private apiUrl = `${environment.apiUrl}/products`;
+export class OrderService {
+  private apiUrl = `${environment.apiUrl}/orders`;
 
   constructor(
     private http: HttpClient,
@@ -19,6 +19,7 @@ export class ProductService {
   private getHeaders(): HttpHeaders {
     const token = this.tokenService.getAccessToken();
     if (!token) {
+      console.error('⚠️ No hay token disponible');
       return new HttpHeaders({ 'Content-Type': 'application/json' });
     }
     return new HttpHeaders({
@@ -27,44 +28,37 @@ export class ProductService {
     });
   }
 
-  getUserProducts(userId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}?userId=${userId}`, { headers: this.getHeaders() }).pipe(
+  getAllOrders(): Observable<any> {
+    return this.http.get(this.apiUrl, { headers: this.getHeaders() }).pipe(
       catchError((error) => {
-        console.error('Error al obtener productos del usuario:', error);
-        return throwError(() => error);
-      })
-    );
-  }
-  getAllProducts(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/all`, { headers: this.getHeaders() }).pipe(
-      catchError((error) => {
-        console.error('Error al obtener productos:', error);
+        console.error('Error al obtener órdenes:', error);
         return throwError(() => error);
       })
     );
   }
 
-  getProductById(id: string) {
+  getOrderById(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`, { headers: this.getHeaders() }).pipe(
       catchError((error) => {
-        console.error('Error al obtener producto por id:', error);
-        return throwError(() => error);
-      })
-    );
-  }
-  createProduct(userId: number, productData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/create?userId=${userId}`, productData, { headers: this.getHeaders() }).pipe(
-      catchError((error) => {
-        console.error('Error al agregar producto:', error);
+        console.error('Error al obtener orden por ID:', error);
         return throwError(() => error);
       })
     );
   }
 
-  deleteProduct(productId: number, userId: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/delete/${productId}?userId=${userId}`, { headers: this.getHeaders() }).pipe(
+  createOrder(orderData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/create`, orderData, { headers: this.getHeaders() }).pipe(
       catchError((error) => {
-        console.error('Error al eliminar producto:', error);
+        console.error('Error al crear orden:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  deleteOrder(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/delete/${id}`, { headers: this.getHeaders() }).pipe(
+      catchError((error) => {
+        console.error('Error al eliminar orden:', error);
         return throwError(() => error);
       })
     );

@@ -48,10 +48,9 @@ export class LoginComponent {
         if (role === 'ADMIN' || role=== 'SELLER') {
           this.router.navigate(["/app/control-panel"]);
         } else if (role === 'CLIENT') {
-          this.router.navigate(["/tienda"]);
+          this.router.navigate(["/"]);
         } else {
-          console.warn("Rol desconocido", role);
-          this.router.navigate(["/tienda"]);
+          this.router.navigate(["/"]);
         }
       },1500)
     },

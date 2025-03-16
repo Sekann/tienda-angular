@@ -1,22 +1,57 @@
-<header class="bg-primary row position-sticky top-0 z-3 py-2">
-  <div class="col-6 text-center">
-    <a class="text-decoration-none d-block" rel="noopener" href="">
-      <img style="max-width: 115px" src="/logo.svg" alt="logo">
+<!-- para los moviles he visto que es buena idea utilizar offCanvas para el header ya que es como lo tienen la mayoria de las paginas,
+basicamente el offcanvas en Bootstrap es un componente 
+ que muestra un menú lateral o emergente que se desliza dentro o fuera de la pantalla cuando se activa. -->
+
+<header class="bg-primary position-sticky top-0 z-3 py-2">
+  <div class="container d-flex justify-content-between align-items-center">
+    <a href="/" class="text-decoration-none">
+      <img style="max-width: 65px" src="/logo.png" alt="logo">
     </a>
-  </div>
-  <div class="col-6 d-flex align-items-center justify-content-center">
-    <nav class="d-flex flex-row flex-nowrap align-items-center">
-      <a class="text-white text-decoration-none py-2 px-4" rel="noopener" href="">Inicio</a>
-      <a class="text-white text-decoration-none py-2 px-4" rel="noopener" href="">Tienda</a>
-      <a class="text-white text-decoration-none py-2 px-4" rel="noopener" href=""><i class="bi bi-cart"></i></a>
-      <a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <button type="button" class="btn btn-white text-decoration-none py-1 px-3">
-        <i class="bi bi-person"></i> Iniciar sesión
-      </button>
+    <button class="navbar-toggler d-md-none btn btn-white px-2 py-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+      <i class="bi bi-list fs-3"></i>
+    </button>
+    <nav class="d-none d-md-flex align-items-center">
+      <a class="text-white text-decoration-none py-2 px-3" href="/">Inicio</a>
+      <a class="text-white text-decoration-none py-2 px-3" href="/tienda">Tienda</a>
+      <a class="text-white text-decoration-none py-2 px-3" href="/carrito">
+        
+        <i class="bi bi-cart fs-5"></i>
       </a>
+
+      <a *ngIf="!isAuthenticated" href="/login">
+        <button type="button" class="btn btn-white py-1 px-3 fw-semibold">
+          <i class="bi bi-person"></i> Iniciar sesión
+        </button>
+      </a>
+
+      <button *ngIf="isAuthenticated" type="button" class="btn btn-danger py-1 px-3 fw-semibold" (click)="cerrarSesion()">
+        <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+      </button>
     </nav>
   </div>
-  <div class="d-none">
-    <button type="button"><i class="bi bi-list"></i></button>
+
+  <!-- Menú Offcanvas (Para móviles) -->
+  <div class="offcanvas offcanvas-start bg-primary text-white" id="menuLateral">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Menú</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <a class="text-white text-decoration-none py-2 px-3" href="/">Inicio</a>
+      <a class="text-white text-decoration-none py-2 px-3" href="/tienda">Tienda</a>
+      <a class="text-white text-decoration-none py-2 px-3" href="/carrito">
+        <i class="bi bi-cart fs-5"></i> Carrito
+      </a>
+
+      <a *ngIf="!isAuthenticated" href="/login">
+        <button type="button" class="btn btn-white py-1 px-3 fw-semibold mt-3">
+          <i class="bi bi-person"></i> Iniciar sesión
+        </button>
+      </a>
+
+      <button *ngIf="isAuthenticated" type="button" class="btn btn-danger py-1 px-3 fw-semibold mt-3" (click)="cerrarSesion()">
+        <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+      </button>
+    </div>
   </div>
 </header>
